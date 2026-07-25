@@ -11,6 +11,15 @@ function WeatherDashboard() {
   const handleSubmit = (e) => {
     // Prevent refresh
     e.preventDefault();
+
+    // If person does not enter any thing
+    if (!searchInput) {
+      setError('City field cannot be blank.');
+      return;
+    }
+
+    // Primary state of the app
+    setCity(searchInput);
   };
 
   return (
@@ -28,6 +37,7 @@ function WeatherDashboard() {
           type="text" 
           placeholder="Enter a city" 
           value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <button 
           type="submit" 
@@ -35,7 +45,9 @@ function WeatherDashboard() {
           Search
         </button>
       </form>
-      
+
+      {/* ONLY ERRORS no loading in root  */}
+      {error && <p>{error}</p>}
 
       {/* IF CITY ENTERED THEN RENDER WEATHER AND FORECAST */}
       {city && (
