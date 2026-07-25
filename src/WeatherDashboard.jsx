@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+import CurrentWeather from './CurrentWeather';
+import Forecast from './Forecast';
+
 function WeatherDashboard() {
   // STATES
   const [error, setError] = useState('');
@@ -23,14 +26,14 @@ function WeatherDashboard() {
   };
 
   return (
-    <div>
-      
+    <div>      
       {/* HEADER TEXT */}
-      <h1>Simple Weather Dashboard</h1>
+      <h1 style={{ fontSize: '30px' }}>Simple Weather Dashboard</h1>
 
       {/* SEARCH BAR */}
       <form 
         onSubmit={handleSubmit}
+        style={{ marginBottom: '20px' }}
       >
         {/* SEARCH FORM */}
         <input 
@@ -38,20 +41,27 @@ function WeatherDashboard() {
           placeholder="Enter a city" 
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          style={{ margin: '10px', fontSize: '16px' }}
         />
         <button 
           type="submit" 
+          style={{ backgroundColor: 'purple', color: 'white' }}
         >
           Search
         </button>
       </form>
 
       {/* ONLY ERRORS no loading in root  */}
-      {error && <p>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {/* IF CITY ENTERED THEN RENDER WEATHER AND FORECAST */}
       {city && (
         <div>
+          {/* Current Conditions Layout Card */}
+          <CurrentWeather city={city}  />
+
+          {/* 5 Day Forecast Container */}          
+          <Forecast city={city} />
         </div>
       )}
     </div>
