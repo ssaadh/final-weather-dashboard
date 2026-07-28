@@ -4,7 +4,7 @@ import ErrorLoading from './ErrorLoading';
 
 function CurrentWeather( { city }) {
   if (!city) return;
-  const API_KEY = "45d70796701c0a4d7d163ef0eb7f65a4";
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

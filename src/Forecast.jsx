@@ -6,7 +6,7 @@ import ErrorLoading from './ErrorLoading';
 function Forecast( { city }) {
   if (!city) return;
   // Unsecure API included
-  const API_KEY = "45d70796701c0a4d7d163ef0eb7f65a4";
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
