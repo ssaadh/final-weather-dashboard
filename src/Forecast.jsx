@@ -19,19 +19,26 @@ function Forecast( { city }) {
   }, [city]);
 
   // FULL LIFECYCLE FUNCTION: loading, error, success
-  const fetchWeather = async (setCity) => {
+  const fetchWeather = async (cityToSet) => {
     setLoading(true);
     setError('');
 
+    // A purposeful gap to see loading in the app's lifecycle
+    setTimeout(() => {
+      fetchWeatherAPI(cityToSet);
+    }, 2000);
+  }
+
     // FETCH DATA
+  const fetchWeatherAPI = async (cityToSet) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${setCity}&units=imperial&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityToSet}&units=imperial&appid=${API_KEY}`
       );
       const fullForecast = await response.json();
       // This was tricky. The weather api was returning data every 3 hours per day
       // This filter checks for one specific time so only one forecast per day is returned
-      const fiveDays = fullForecast.list.filter((item) => item.dt_txt.includes('12:00:00'));
+      const fiveDays = fullForecast.list.filter((single) => single.dt_txt.includes('12:00:00'));
 
       setForecast(fiveDays);
     } catch (err) {

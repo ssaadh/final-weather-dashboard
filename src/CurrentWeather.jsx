@@ -21,14 +21,20 @@ function CurrentWeather( { city }) {
     setLoading(true);
     setError('');
 
+    // A purposeful gap to see loading in the lifecycle
+    setTimeout(() => {
+      fetchWeatherAPI(cityToSet);
+    }, 2000);
+  };
+
     // FETCH DATA
+  const fetchWeatherAPI = async (cityToSet) => {
     try {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${cityToSet}&units=imperial&appid=${API_KEY}`
       );
       if (!response.ok) throw new Error('City not found. Please check spelling.');
       const data = await response.json();
-      
       setWeather(data);
     } catch (err) {
       setError(err.message);
