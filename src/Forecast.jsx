@@ -29,9 +29,11 @@ function Forecast( { city }) {
         `https://api.openweathermap.org/data/2.5/forecast?q=${setCity}&units=imperial&appid=${API_KEY}`
       );
       const fullForecast = await response.json();
+      // This was tricky. The weather api was returning data every 3 hours per day
+      // This filter checks for one specific time so only one forecast per day is returned
+      const fiveDays = fullForecast.list.filter((item) => item.dt_txt.includes('12:00:00'));
 
-      console.log('fullForecast', fullForecast);
-      setForecast(fullForecast.list);
+      setForecast(fiveDays);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -39,7 +41,6 @@ function Forecast( { city }) {
     }
   };
 
-  console.log('forecast', forecast);
   return (
     <>
     <h3 style={{ fontSize: '20px', marginBottom: '0' }}>5 Day Extended Forecast</h3>

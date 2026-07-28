@@ -26,7 +26,8 @@ function WeatherDashboard() {
   };
 
   return (
-    <div>      
+    <div style={{ padding: '20px' }}>
+      
       {/* HEADER TEXT */}
       <h1 style={{ fontSize: '30px' }}>Simple Weather Dashboard</h1>
 
@@ -41,18 +42,18 @@ function WeatherDashboard() {
           placeholder="Enter a city" 
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          style={{ margin: '10px', fontSize: '16px' }}
+          style={{ fontSize: '16px' }}
         />
         <button 
           type="submit" 
-          style={{ backgroundColor: 'purple', color: 'white' }}
+          style={{ padding: '10px', backgroundColor: 'purple', color: 'white' }}
         >
           Search
         </button>
       </form>
 
       {/* ONLY ERRORS no loading in root  */}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 
       {/* IF CITY ENTERED THEN RENDER WEATHER AND FORECAST */}
       {city && (

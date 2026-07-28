@@ -1,10 +1,16 @@
 function IndividualForecast({ day }) {
   if (!day) return null;
 
+  // This was tricky. Had a string date and time that looked bad to humans
+  // Grabbing the same dt_txt date string and converting it to a day
+  const weekday = new Date(day.dt_txt).toLocaleDateString('en-US', {
+    weekday: 'long'
+  });
+
   return (
     <div style={{ padding: '10px', border: '3px solid purple', textAlign: 'center', margin: '20px' }}>
       <p style={{ fontWeight: '500', fontSize: '14px', margin: '0', marginBottom: '10px' }}>
-        {day.dt_txt}
+        {weekday}
       </p>
       {day && (
         <>
