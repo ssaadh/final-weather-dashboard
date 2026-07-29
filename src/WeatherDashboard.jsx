@@ -29,7 +29,8 @@ function WeatherDashboard() {
     <div style={{ padding: '20px' }}>
       
       {/* HEADER TEXT */}
-      <h1 style={{ fontSize: '30px' }}>Simple Weather Dashboard</h1>
+      <h1 style={{fontSize: '30px', color: '#1b4e95', marginBottom: '0px'}}>Simple Weather Dashboard</h1>
+      <p style={{fontStyle: 'italic', marginTop: '5px'}}>There is a 2 second gap before API is called and results are shown</p>
 
       {/* SEARCH BAR */}
       <form 
@@ -42,11 +43,11 @@ function WeatherDashboard() {
           placeholder="Enter a city" 
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          style={{ fontSize: '16px' }}
+          style={{ fontSize: '16px', marginRight: '10px', padding: '5px' }}
         />
         <button 
           type="submit" 
-          style={{ padding: '10px', backgroundColor: 'purple', color: 'white' }}
+          style={{ padding: '10px', backgroundColor: 'purple', color: 'white', marginLeft: '10px' }}
         >
           Search
         </button>

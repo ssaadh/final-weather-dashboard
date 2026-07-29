@@ -60,7 +60,7 @@ function CurrentWeather( { city }) {
       />
       {weather && (
       <div style={{ padding: '20px', border: '5px solid purple', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '25px', margin: '0' }}>{weather.name}, {weather.sys.country}</h2>
+        <h2 style={{ fontSize: '25px', margin: '0', color: '#105417' }}>{weather.name}, {weather.sys.country}</h2>
         <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} />
         <h4 style={{ fontSize: '40px', margin: '0', color: tempColor }}>{temp}°F</h4>
         <span>{weather.weather[0].description}</span>

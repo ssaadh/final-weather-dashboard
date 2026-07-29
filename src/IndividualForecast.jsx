@@ -17,8 +17,8 @@ function IndividualForecast({ day }) {
   }
 
   return (
-    <div style={{ padding: '10px', border: '3px solid purple', textAlign: 'center', margin: '20px' }}>
-      <p style={{ fontWeight: '500', fontSize: '14px', margin: '0', marginBottom: '10px' }}>
+    <div style={{ padding: '10px', border: '3px solid purple', textAlign: 'center', marginTop: '0', marginBottom: '20px' }}>
+      <p style={{ fontWeight: '500', fontSize: '14px', margin: '0', marginBottom: '10px', color: '#105417' }}>
         {weekday}
       </p>
       {day && (

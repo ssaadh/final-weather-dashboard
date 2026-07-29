@@ -50,14 +50,14 @@ function Forecast( { city }) {
 
   return (
     <>
-    <h3 style={{ fontSize: '20px', marginBottom: '0' }}>5 Day Extended Forecast</h3>
+    <h3 style={{ fontSize: '20px', marginBottom: '0', color: '#274b7e' }}>5 Day Extended Forecast</h3>
     <ErrorLoading
       error={error}
       loading={loading}
      />
     {forecast && (
       <div>
-        <div style={{ width: '300px', textAlign: 'center', padding: '20px', margin: '15px' }}>
+        <div style={{ width: '300px', textAlign: 'center', padding: '20px', margin: '0 60px' }}>
           {forecast.map((day, keyid) => (
             <IndividualForecast key={keyid} day={day} />
           ))}
