@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast';
@@ -9,6 +9,15 @@ function WeatherDashboard() {
   
   const [city, setCity] = useState('');
   const [searchInput, setSearchInput] = useState('');
+
+  // Initial one time setting the city from browser storage
+  // if available upon mounting/loading
+  useEffect(() => {
+    const city = localStorage.getItem('lastCity');
+    if (city) {
+      setCity(city);
+    }
+  }, []);
 
   // FORM SUBMISSION
   const handleSubmit = (e) => {
@@ -23,6 +32,8 @@ function WeatherDashboard() {
 
     // Primary state of the app
     setCity(searchInput);
+    // Last city stored in browser storage
+    localStorage.setItem('lastCity', searchInput);
   };
 
   return (
