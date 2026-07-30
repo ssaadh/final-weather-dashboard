@@ -43,6 +43,7 @@ function CurrentWeather( { city }) {
     }
   };
   
+  // Custom Temp Color depending on numeric temp value
   const temp = Math.round(weather?.main?.temp);
   let tempColor = '#2563eb';
 

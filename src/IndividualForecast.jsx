@@ -7,6 +7,7 @@ function IndividualForecast({ day }) {
     weekday: 'long'
   });
 
+  // Custom Temp Color depending on numeric temp value
   const temp = day.main.temp;
   let tempColor = '#2563eb';
 
