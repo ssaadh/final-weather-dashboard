@@ -16,6 +16,7 @@ function WeatherDashboard() {
     const city = localStorage.getItem('lastCity');
     if (city) {
       setCity(city);
+      setSearchInput(city);
     }
   }, []);
 
